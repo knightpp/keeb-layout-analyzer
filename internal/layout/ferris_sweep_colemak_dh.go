@@ -8,8 +8,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: 'q',
 			},
 			Key{
-				ID:   "a",
-				Char: 'a',
+				ID:       "a",
+				Char:     'a',
+				IsHoming: true,
 			},
 			Key{
 				ID:   "lshift|x",
@@ -46,8 +47,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: 'w',
 			},
 			Key{
-				ID:   "r",
-				Char: 'r',
+				ID:       "r",
+				Char:     'r',
+				IsHoming: true,
 			},
 			Key{
 				ID:   "c",
@@ -84,8 +86,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: 'f',
 			},
 			Key{
-				ID:   "s",
-				Char: 's',
+				ID:       "s",
+				Char:     's',
+				IsHoming: true,
 			},
 			Key{
 				ID:   "d",
@@ -122,8 +125,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: 'p',
 			},
 			Key{
-				ID:   "t",
-				Char: 't',
+				ID:       "t",
+				Char:     't',
+				IsHoming: true,
 			},
 			Key{
 				ID:   "v",
@@ -213,8 +217,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: ';',
 			},
 			Key{
-				ID:   "o",
-				Char: 'o',
+				ID:       "o",
+				Char:     'o',
+				IsHoming: true,
 			},
 			Key{
 				ID:   "rshift|/",
@@ -259,8 +264,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: 'y',
 			},
 			Key{
-				ID:   "i",
-				Char: 'i',
+				ID:       "i",
+				Char:     'i',
+				IsHoming: true,
 			},
 			Key{
 				ID:   ".",
@@ -297,8 +303,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: 'u',
 			},
 			Key{
-				ID:   "e",
-				Char: 'e',
+				ID:       "e",
+				Char:     'e',
+				IsHoming: true,
 			},
 			Key{
 				ID:   ",",
@@ -335,8 +342,9 @@ var FerrisSweepColemakDH = Flatten(
 				Char: 'l',
 			},
 			Key{
-				ID:   "n",
-				Char: 'n',
+				ID:       "n",
+				Char:     'n',
+				IsHoming: true,
 			},
 			Key{
 				ID:   "h",
@@ -422,9 +430,10 @@ var FerrisSweepColemakDH = Flatten(
 	Cluster(LeftSide, ThumbFinger,
 		[]Key{
 			{
-				ID:     "left space",
-				Char:   ' ',
-				Finger: ThumbFinger,
+				ID:       "left space",
+				Char:     ' ',
+				Finger:   ThumbFinger,
+				IsHoming: true,
 			},
 			{
 				ID: "layer 1",
@@ -443,6 +452,7 @@ var FerrisSweepColemakDH = Flatten(
 					X: 0,
 					Y: 0,
 				},
+				IsHoming: true,
 			},
 		},
 	),
