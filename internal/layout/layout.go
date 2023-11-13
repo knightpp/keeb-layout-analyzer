@@ -27,11 +27,12 @@ const (
 type Side bool
 
 type Key struct {
-	ID     string
-	Char   rune
-	Pos    Vec2
-	Finger Finger
-	Side   Side
+	ID       string
+	Char     rune
+	Pos      Vec2
+	Finger   Finger
+	Side     Side
+	IsHoming bool
 	// Activation is a list of key ids required to press this key
 	Activation []string
 }
@@ -44,8 +45,9 @@ type Layout struct {
 	Keys  []Key
 	State *State
 
-	charToKey map[rune]Key
-	idToKey   map[string]Key
+	charToKey       map[rune]Key
+	idToKey         map[string]Key
+	fingerToHomeKey map[Finger]Key
 }
 
 func New(keys []Key, state *State) *Layout {
@@ -59,11 +61,21 @@ func New(keys []Key, state *State) *Layout {
 		idToKey[key.ID] = key
 	}
 
+	fingerToHomeKey := make(map[Finger]Key, 10)
+	for _, key := range keys {
+		if !key.IsHoming {
+			continue
+		}
+
+		fingerToHomeKey[key.Finger] = key
+	}
+
 	return &Layout{
-		Keys:      keys,
-		State:     state,
-		charToKey: charToKey,
-		idToKey:   idToKey,
+		Keys:            keys,
+		State:           state,
+		charToKey:       charToKey,
+		idToKey:         idToKey,
+		fingerToHomeKey: fingerToHomeKey,
 	}
 }
 
@@ -92,6 +104,9 @@ func (l *Layout) Analyze(text string) (Stats, error) {
 
 		stats.TotalDistance += l.State.Move(k).Len()
 		stats.record(k)
+
+		// back to home key
+		stats.TotalDistance += l.State.Move(l.fingerToHomeKey[k.Finger]).Len()
 	}
 
 	return stats, errors.Join(errs...)
