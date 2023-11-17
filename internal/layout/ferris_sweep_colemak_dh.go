@@ -3,73 +3,39 @@ package layout
 var FerrisSweepColemakDH = Flatten(
 	Cluster(LeftSide, PinkyFinger,
 		Column(
+			Key{Char: 'q'},
 			Key{
-				ID:   "q",
-				Char: 'q',
+				Char:   'a',
+				IsHome: true,
 			},
-			Key{
-				ID:       "a",
-				Char:     'a',
-				IsHoming: true,
-			},
-			Key{
-				ID:   "lshift|x",
-				Char: 'x',
-			},
+			Key{Char: 'x'},
 		),
-		ActivationGroup([]string{"rshift|/"},
+		ActivationGroup([]string{"rshift"},
 			Column(
-				Key{
-					ID:   "Q",
-					Char: 'Q',
-				},
-				Key{
-					ID:   "A",
-					Char: 'A',
-				},
-				Key{
-					ID:   "X",
-					Char: 'X',
-				},
+				Key{Char: 'Q'},
+				Key{Char: 'A'},
+				Key{Char: 'X'},
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
-			Key{
-				ID:   "1",
-				Char: '1',
-			},
+			Key{Char: '1'},
 		),
 	),
 	Cluster(LeftSide, RingFinger,
 		Column(
+			Key{Char: 'w'},
 			Key{
-				ID:   "w",
-				Char: 'w',
+				ID:     "lshift",
+				Char:   'r',
+				IsHome: true,
 			},
-			Key{
-				ID:       "r",
-				Char:     'r',
-				IsHoming: true,
-			},
-			Key{
-				ID:   "c",
-				Char: 'c',
-			},
+			Key{Char: 'c'},
 		),
-		ActivationGroup([]string{"rshift|/"},
+		ActivationGroup([]string{"rshift"},
 			Column(
-				Key{
-					ID:   "W",
-					Char: 'W',
-				},
-				Key{
-					ID:   "R",
-					Char: 'R',
-				},
-				Key{
-					ID:   "C",
-					Char: 'C',
-				},
+				Key{Char: 'W'},
+				Key{Char: 'R'},
+				Key{Char: 'C'},
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
@@ -81,115 +47,74 @@ var FerrisSweepColemakDH = Flatten(
 	),
 	Cluster(LeftSide, MiddleFinger,
 		Column(
+			Key{Char: 'f'},
 			Key{
-				ID:   "f",
-				Char: 'f',
+				Char:   's',
+				IsHome: true,
 			},
-			Key{
-				ID:       "s",
-				Char:     's',
-				IsHoming: true,
-			},
-			Key{
-				ID:   "d",
-				Char: 'd',
-			},
+			Key{Char: 'd'},
 		),
-		ActivationGroup([]string{"rshift|/"},
+		ActivationGroup([]string{"rshift"},
 			Column(
-				Key{
-					ID:   "F",
-					Char: 'F',
-				},
-				Key{
-					ID:   "S",
-					Char: 'S',
-				},
-				Key{
-					ID:   "D",
-					Char: 'D',
-				},
+				Key{Char: 'F'},
+				Key{Char: 'S'},
+				Key{Char: 'D'},
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
-			Key{
-				ID:   "3",
-				Char: '3',
-			},
+			Key{Char: '3'},
 		),
 	),
 	Cluster(LeftSide, IndexFinger,
 		Column(
+			Key{Char: 'p'},
 			Key{
-				ID:   "p",
-				Char: 'p',
+				Char:   't',
+				IsHome: true,
 			},
-			Key{
-				ID:       "t",
-				Char:     't',
-				IsHoming: true,
-			},
-			Key{
-				ID:   "v",
-				Char: 'v',
-			},
+			Key{Char: 'v'},
 		),
 		Column(
 			Key{
-				ID:   "b",
 				Char: 'b',
 				Pos: Vec2{
 					X: int(U1),
 				},
 			},
 			Key{
-				ID:   "g",
 				Char: 'g',
 				Pos: Vec2{
 					X: int(U1),
 				},
 			},
 			Key{
-				ID:   "z",
 				Char: 'z',
 				Pos: Vec2{
 					X: int(U1),
 				},
 			},
 		),
-		ActivationGroup([]string{"rshift|/"},
+		ActivationGroup([]string{"rshift"},
 			Flatten(
 				Column(
-					Key{
-						ID:   "P",
-						Char: 'P',
-					},
-					Key{
-						ID:   "T",
-						Char: 'T',
-					},
-					Key{
-						ID:   "V",
-						Char: 'V',
-					},
+					Key{Char: 'P'},
+					Key{Char: 'T'},
+					Key{Char: 'V'},
 				),
 				Column(
 					Key{
-						ID:   "B",
 						Char: 'B',
 						Pos: Vec2{
 							X: int(U1),
 						},
 					},
 					Key{
-						ID:   "G",
 						Char: 'G',
 						Pos: Vec2{
 							X: int(U1),
 						},
 					},
 					Key{
-						ID:   "Z",
 						Char: 'Z',
 						Pos: Vec2{
 							X: int(U1),
@@ -212,43 +137,23 @@ var FerrisSweepColemakDH = Flatten(
 	///////////// right hand
 	Cluster(RightSide, PinkyFinger,
 		Column(
+			Key{Char: ';'},
 			Key{
-				ID:   ";",
-				Char: ';',
+				Char:   'o',
+				IsHome: true,
 			},
-			Key{
-				ID:       "o",
-				Char:     'o',
-				IsHoming: true,
-			},
-			Key{
-				ID:   "rshift|/",
-				Char: '/',
-			},
+			Key{Char: '/'},
 		),
-		ActivationGroup([]string{"lshift|x"},
+		ActivationGroup([]string{"lshift"},
 			Column(
-				Key{
-					ID:   ":",
-					Char: ':',
-				},
-				Key{
-					ID:   "O",
-					Char: 'O',
-				},
-				Key{
-					ID:   "?",
-					Char: '?',
-				},
+				Key{Char: ':'},
+				Key{Char: 'O'},
+				Key{Char: '?'},
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
+			Key{Char: '0'},
 			Key{
-				ID:   "0",
-				Char: '0',
-			},
-			Key{
-				ID:   "'",
 				Char: '\'',
 				Pos: Vec2{
 					X: 0,
@@ -259,154 +164,95 @@ var FerrisSweepColemakDH = Flatten(
 	),
 	Cluster(RightSide, RingFinger,
 		Column(
+			Key{Char: 'y'},
 			Key{
-				ID:   "y",
-				Char: 'y',
+				ID:     "rshift",
+				Char:   'i',
+				IsHome: true,
 			},
-			Key{
-				ID:       "i",
-				Char:     'i',
-				IsHoming: true,
-			},
-			Key{
-				ID:   ".",
-				Char: '.',
-			},
+			Key{Char: '.'},
 		),
-		ActivationGroup([]string{"lshift|x"},
+		ActivationGroup([]string{"lshift"},
 			Column(
-				Key{
-					ID:   "Y",
-					Char: 'Y',
-				},
-				Key{
-					ID:   "I",
-					Char: 'I',
-				},
-				Key{
-					ID:   ">",
-					Char: '>',
-				},
+				Key{Char: 'Y'},
+				Key{Char: 'I'},
+				Key{Char: '>'},
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
-			Key{
-				ID:   "9",
-				Char: '9',
-			},
+			Key{Char: '9'},
 		),
 	),
 	Cluster(RightSide, MiddleFinger,
 		Column(
+			Key{Char: 'u'},
 			Key{
-				ID:   "u",
-				Char: 'u',
+				Char:   'e',
+				IsHome: true,
 			},
-			Key{
-				ID:       "e",
-				Char:     'e',
-				IsHoming: true,
-			},
-			Key{
-				ID:   ",",
-				Char: ',',
-			},
+			Key{Char: ','},
 		),
-		ActivationGroup([]string{"lshift|x"},
+		ActivationGroup([]string{"lshift"},
 			Column(
-				Key{
-					ID:   "U",
-					Char: 'U',
-				},
-				Key{
-					ID:   "E",
-					Char: 'E',
-				},
-				Key{
-					ID:   "<",
-					Char: '<',
-				},
+				Key{Char: 'U'},
+				Key{Char: 'E'},
+				Key{Char: '<'},
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
-			Key{
-				ID:   "8",
-				Char: '8',
-			},
+			Key{Char: '8'},
 		),
 	),
 	Cluster(RightSide, IndexFinger,
 		Column(
+			Key{Char: 'l'},
 			Key{
-				ID:   "l",
-				Char: 'l',
+				Char:   'n',
+				IsHome: true,
 			},
-			Key{
-				ID:       "n",
-				Char:     'n',
-				IsHoming: true,
-			},
-			Key{
-				ID:   "h",
-				Char: 'h',
-			},
+			Key{Char: 'h'},
 		),
 		Column(
 			Key{
-				ID:   "j",
 				Char: 'j',
 				Pos: Vec2{
 					X: int(U1),
 				},
 			},
 			Key{
-				ID:   "m",
 				Char: 'm',
 				Pos: Vec2{
 					X: int(U1),
 				},
 			},
 			Key{
-				ID:   "k",
 				Char: 'k',
 				Pos: Vec2{
 					X: int(U1),
 				},
 			},
 		),
-		ActivationGroup([]string{"lshift|x"},
+		ActivationGroup([]string{"lshift"},
 			Flatten(
 				Column(
-					Key{
-						ID:   "L",
-						Char: 'L',
-					},
-					Key{
-						ID:   "N",
-						Char: 'N',
-					},
-					Key{
-						ID:   "H",
-						Char: 'H',
-					},
+					Key{Char: 'L'},
+					Key{Char: 'N'},
+					Key{Char: 'H'},
 				),
 				Column(
 					Key{
-						ID:   "J",
 						Char: 'J',
 						Pos: Vec2{
 							X: int(U1),
 						},
 					},
 					Key{
-						ID:   "M",
 						Char: 'M',
 						Pos: Vec2{
 							X: int(U1),
 						},
 					},
 					Key{
-						ID:   "K",
 						Char: 'K',
 						Pos: Vec2{
 							X: int(U1),
@@ -416,24 +262,18 @@ var FerrisSweepColemakDH = Flatten(
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
-			Key{
-				ID:   "7",
-				Char: '7',
-			},
-			Key{
-				ID:   "6",
-				Char: '6',
-			},
+			Key{Char: '7'},
+			Key{Char: '6'},
 		),
 	),
 
 	Cluster(LeftSide, ThumbFinger,
 		[]Key{
 			{
-				ID:       "left space",
-				Char:     ' ',
-				Finger:   ThumbFinger,
-				IsHoming: true,
+				ID:     "left space",
+				Char:   ' ',
+				Finger: ThumbFinger,
+				IsHome: true,
 			},
 			{
 				ID: "layer 1",
@@ -452,7 +292,7 @@ var FerrisSweepColemakDH = Flatten(
 					X: 0,
 					Y: 0,
 				},
-				IsHoming: true,
+				IsHome: true,
 			},
 		},
 	),

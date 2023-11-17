@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"math"
+	"slices"
 	"strings"
 
 	"github.com/knightpp/keeb-layout-analyzer/internal/distance"
@@ -27,12 +28,12 @@ const (
 type Side bool
 
 type Key struct {
-	ID       string
-	Char     rune
-	Pos      Vec2
-	Finger   Finger
-	Side     Side
-	IsHoming bool
+	ID     string
+	Char   rune
+	Pos    Vec2
+	Finger Finger
+	Side   Side
+	IsHome bool
 	// Activation is a list of key ids required to press this key
 	Activation []string
 }
@@ -51,6 +52,14 @@ type Layout struct {
 }
 
 func New(keys []Key, state *State) *Layout {
+	keys = slices.Clone(keys)
+
+	for i, key := range keys {
+		if key.ID == "" {
+			keys[i].ID = string(key.Char)
+		}
+	}
+
 	charToKey := make(map[rune]Key, len(keys))
 	for _, key := range keys {
 		charToKey[key.Char] = key
@@ -63,7 +72,7 @@ func New(keys []Key, state *State) *Layout {
 
 	fingerToHomeKey := make(map[Finger]Key, 10)
 	for _, key := range keys {
-		if !key.IsHoming {
+		if !key.IsHome {
 			continue
 		}
 
