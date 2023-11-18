@@ -11,7 +11,7 @@ import (
 var engCommonWords string
 
 func main() {
-	l := layout.New(layout.FerrisSweepColemakDH, &layout.State{
+	l := layout.New(layout.ColemakDH34Keys, &layout.State{
 		Left:  &layout.Hand{},
 		Right: &layout.Hand{},
 	})
