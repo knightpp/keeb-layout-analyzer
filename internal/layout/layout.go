@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/knightpp/keeb-layout-analyzer/internal/distance"
+	"gonum.org/v1/gonum/stat/combin"
 )
 
 const (
@@ -86,6 +87,22 @@ func New(keys []Key, state *State) *Layout {
 		idToKey:         idToKey,
 		fingerToHomeKey: fingerToHomeKey,
 	}
+}
+
+func Permutations(keys []Key, state *State, text string) []*Layout {
+	keys = slices.Clone(keys)
+	layouts := make([]*Layout, 0, len(keys)*len(keys))
+	const k = 2
+	gen := combin.NewCombinationGenerator(len(keys), k)
+	buf := make([]int, k)
+	for gen.Next() {
+		cmb := gen.Combination(buf)
+		swap(keys, cmb[0], cmb[1])
+
+		layouts = append(layouts, New(keys, state.Clone()))
+	}
+
+	return layouts
 }
 
 func (l *Layout) Analyze(text string) (Stats, error) {
@@ -204,6 +221,15 @@ func (s *State) Move(k Key) Vec2 {
 	}
 }
 
+func (s *State) Clone() *State {
+	l := *s.Left
+	r := *s.Right
+	return &State{
+		Left:  &l,
+		Right: &r,
+	}
+}
+
 type Hand struct {
 	Thumb  Vec2
 	Index  Vec2
@@ -274,4 +300,14 @@ func Flatten(keyss ...[]Key) []Key {
 		flat = append(flat, keys...)
 	}
 	return flat
+}
+
+func swap(keys []Key, i, j int) {
+	ith := keys[i]
+	jth := keys[j]
+
+	keys[i].Char = jth.Char
+	keys[i].ID = jth.ID
+	keys[j].Char = ith.Char
+	keys[j].ID = ith.ID
 }
