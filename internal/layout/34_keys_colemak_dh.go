@@ -1,6 +1,6 @@
 package layout
 
-var FerrisSweepColemakDH = Flatten(
+var ColemakDH34Keys = Flatten(
 	Cluster(LeftSide, PinkyFinger,
 		Column(
 			Key{Char: 'q'},
