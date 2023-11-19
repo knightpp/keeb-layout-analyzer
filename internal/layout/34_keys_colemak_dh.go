@@ -124,14 +124,8 @@ var ColemakDH34Keys = Flatten(
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
-			Key{
-				ID:   "4",
-				Char: '4',
-			},
-			Key{
-				ID:   "5",
-				Char: '5',
-			},
+			Key{Char: '4'},
+			Key{Char: '5'},
 		),
 	),
 	///////////// right hand
