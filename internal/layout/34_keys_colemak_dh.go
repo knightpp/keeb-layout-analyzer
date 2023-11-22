@@ -2,27 +2,20 @@ package layout
 
 var ColemakDH34Keys = Flatten(
 	Cluster(LeftSide, PinkyFinger,
-		Column(
+		AddUppercase([]string{"rshift"}, Column(
 			Key{Char: 'q'},
 			Key{
 				Char:   'a',
 				IsHome: true,
 			},
 			Key{Char: 'x'},
-		),
-		ActivationGroup([]string{"rshift"},
-			Column(
-				Key{Char: 'Q'},
-				Key{Char: 'A'},
-				Key{Char: 'X'},
-			)...,
-		),
+		)),
 		ActivationGroup([]string{"layer 1"},
 			Key{Char: '1'},
 		),
 	),
 	Cluster(LeftSide, RingFinger,
-		Column(
+		AddUppercase([]string{"rshift"}, Column(
 			Key{Char: 'w'},
 			Key{
 				ID:     "lshift",
@@ -30,14 +23,7 @@ var ColemakDH34Keys = Flatten(
 				IsHome: true,
 			},
 			Key{Char: 'c'},
-		),
-		ActivationGroup([]string{"rshift"},
-			Column(
-				Key{Char: 'W'},
-				Key{Char: 'R'},
-				Key{Char: 'C'},
-			)...,
-		),
+		)),
 		ActivationGroup([]string{"layer 1"},
 			Key{
 				ID:   "2",
@@ -46,90 +32,46 @@ var ColemakDH34Keys = Flatten(
 		),
 	),
 	Cluster(LeftSide, MiddleFinger,
-		Column(
+		AddUppercase([]string{"rshift"}, Column(
 			Key{Char: 'f'},
 			Key{
 				Char:   's',
 				IsHome: true,
 			},
 			Key{Char: 'd'},
-		),
-		ActivationGroup([]string{"rshift"},
-			Column(
-				Key{Char: 'F'},
-				Key{Char: 'S'},
-				Key{Char: 'D'},
-			)...,
-		),
+		)),
 		ActivationGroup([]string{"layer 1"},
 			Key{Char: '3'},
 		),
 	),
 	Cluster(LeftSide, IndexFinger,
-		Column(
+		AddUppercase([]string{"rshift"}, Column(
 			Key{Char: 'p'},
 			Key{
 				Char:   't',
 				IsHome: true,
 			},
 			Key{Char: 'v'},
-		),
-		Column(
+		)),
+		AddUppercase([]string{"rshift"}, Column(
 			Key{
 				Char: 'b',
-				Pos: Vec2{
-					X: int(U1),
-				},
+				Pos:  Vec2{X: int(U1)},
 			},
 			Key{
 				Char: 'g',
-				Pos: Vec2{
-					X: int(U1),
-				},
+				Pos:  Vec2{X: int(U1)},
 			},
 			Key{
 				Char: 'z',
-				Pos: Vec2{
-					X: int(U1),
-				},
+				Pos:  Vec2{X: int(U1)},
 			},
-		),
-		ActivationGroup([]string{"rshift"},
-			Flatten(
-				Column(
-					Key{Char: 'P'},
-					Key{Char: 'T'},
-					Key{Char: 'V'},
-				),
-				Column(
-					Key{
-						Char: 'B',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-					Key{
-						Char: 'G',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-					Key{
-						Char: 'Z',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-				),
-			)...,
-		),
+		)),
 		ActivationGroup([]string{"layer 1"},
 			Key{Char: '4'},
 			Key{
 				Char: '5',
-				Pos: Vec2{
-					X: int(U1),
-				},
+				Pos:  Vec2{X: int(U1)},
 			},
 		),
 	),
@@ -203,7 +145,7 @@ var ColemakDH34Keys = Flatten(
 		),
 	),
 	Cluster(RightSide, IndexFinger,
-		Column(
+		AddUppercase([]string{"lshift"}, Column(
 			Key{
 				Char: 'l',
 				Pos: Vec2{
@@ -223,41 +165,12 @@ var ColemakDH34Keys = Flatten(
 					X: int(U1),
 				},
 			},
-		),
-		Column(
+		)),
+		AddUppercase([]string{"lshift"}, Column(
 			Key{Char: 'j'},
 			Key{Char: 'm'},
 			Key{Char: 'k'},
-		),
-		ActivationGroup([]string{"lshift"},
-			Flatten(
-				Column(
-					Key{
-						Char: 'L',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-					Key{
-						Char: 'N',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-					Key{
-						Char: 'H',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-				),
-				Column(
-					Key{Char: 'J'},
-					Key{Char: 'M'},
-					Key{Char: 'K'},
-				),
-			)...,
-		),
+		)),
 		ActivationGroup([]string{"layer 1"},
 			Key{
 				Char: '7',
