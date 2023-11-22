@@ -126,6 +126,12 @@ func Permutations(keys []Key, state *State, text string) []*Layout {
 }
 
 func (l *Layout) Analyze(text string) (Stats, error) {
+	for _, finger := range []Finger{
+		ThumbFinger, IndexFinger, MiddleFinger, RingFinger, PinkyFinger,
+	} {
+		l.State.Move(l.fingerToHomeKey[finger])
+	}
+
 	var (
 		stats Stats
 		errs  []error
