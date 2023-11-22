@@ -10,7 +10,8 @@ import (
 	"golang.org/x/exp/maps"
 	"golang.org/x/exp/slices"
 	"golang.org/x/image/font"
-	"golang.org/x/image/font/basicfont"
+	"golang.org/x/image/font/gofont/gomonobold"
+	"golang.org/x/image/font/opentype"
 	"golang.org/x/image/math/fixed"
 )
 
@@ -34,12 +35,25 @@ func ToImage(keys []layout.Key, keyCapSize int) image.Image {
 		fingers[layer] = append(fingers[layer], key)
 	}
 
-	img := image.NewRGBA(image.Rect(0, 0, 500, 500))
+	img := image.NewRGBA(image.Rect(0, 0, 600, 500))
 	draw.Draw(img, img.Bounds(), image.NewUniform(color.White), image.Point{}, draw.Src)
+
+	font, err := opentype.Parse(gomonobold.TTF)
+	if err != nil {
+		panic(err)
+	}
+
+	face, err := opentype.NewFace(font, &opentype.FaceOptions{
+		Size: 11,
+		DPI:  72,
+	})
+	if err != nil {
+		panic(err)
+	}
 
 	ld := layoutDrawer{
 		border:     newBorder(image.Rect(0, 0, keyCapSize, keyCapSize), 1),
-		font:       basicfont.Face7x13,
+		font:       face,
 		keycapSize: keyCapSize,
 	}
 
@@ -148,7 +162,7 @@ func (ld *layoutDrawer) drawKey(
 	size, _ := fd.BoundString(label)
 	fd.Dot = fixed.P(
 		pos.X+border.Dx()/2-size.Max.X.Ceil()/2,
-		pos.Y+border.Dy()/2+size.Max.Y.Ceil(),
+		pos.Y+border.Dy()/2+size.Max.Y.Ceil()+5,
 	)
 
 	fd.DrawString(string(label))
@@ -164,7 +178,7 @@ func (ld *layoutDrawer) drawText(img draw.Image, text string, pos image.Point) {
 	size, _ := fd.BoundString(text)
 	fd.Dot = fixed.P(
 		pos.X+ld.keycapSize,
-		pos.Y+size.Max.Y.Ceil()*5,
+		pos.Y+size.Max.Y.Ceil()*6,
 	)
 	fd.DrawString(text)
 }

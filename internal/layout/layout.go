@@ -7,6 +7,7 @@ import (
 	"math"
 	"slices"
 	"strings"
+	"unicode"
 
 	"github.com/knightpp/keeb-layout-analyzer/internal/distance"
 	"gonum.org/v1/gonum/stat/combin"
@@ -125,14 +126,33 @@ func Permutations(keys []Key, state *State, text string) []*Layout {
 }
 
 func (l *Layout) Analyze(text string) (Stats, error) {
+	for _, finger := range []Finger{
+		ThumbFinger, IndexFinger, MiddleFinger, RingFinger, PinkyFinger,
+	} {
+		l.State.Move(l.fingerToHomeKey[finger])
+	}
+
 	var (
 		stats Stats
 		errs  []error
 	)
 	for _, ch := range text {
+		if ch == '\n' {
+			continue
+		}
+		if ch == '—' {
+			ch = '-'
+		}
+		if ch == '’' {
+			ch = '\''
+		}
+		if ch == '…' {
+			ch = '.'
+		}
+
 		k, ok := l.charToKey[ch]
 		if !ok {
-			errs = append(errs, fmt.Errorf("unknown char: %c", ch))
+			errs = append(errs, fmt.Errorf("unknown char: %c(0x%X)", ch, ch))
 			continue
 		}
 
@@ -327,6 +347,27 @@ func Flatten(keyss ...[]Key) []Key {
 		flat = append(flat, keys...)
 	}
 	return flat
+}
+
+func AddUppercase(activation []string, keys []Key) []Key {
+	keys = slices.Clone(keys)
+
+	for _, key := range keys {
+		if key.Char == 0 ||
+			!unicode.IsLetter(key.Char) ||
+			unicode.IsUpper(key.Char) {
+			continue
+		}
+
+		key.ID = ""
+		key.Activation = activation
+		key.Char = unicode.ToUpper(key.Char)
+		key.IsHome = false
+
+		keys = append(keys, key)
+	}
+
+	return keys
 }
 
 func swap(keys []Key, i, j int) {

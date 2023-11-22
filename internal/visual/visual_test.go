@@ -10,26 +10,46 @@ import (
 	"github.com/knightpp/keeb-layout-analyzer/internal/visual"
 )
 
-func TestColemak(t *testing.T) {
-	t.Skip()
+func TestToImage(t *testing.T) {
+	// t.Skip()
 
-	img := visual.ToImage(layout.ColemakDH34Keys, 20)
-
-	file, err := os.Create("colemak-dh-34-keys.jpeg")
-	if err != nil {
-		t.Fatal(err)
-		return
+	testCases := []struct {
+		name string
+		keys []layout.Key
+	}{
+		{
+			name: "colemak",
+			keys: layout.ColemakDH34Keys,
+		},
+		{
+			name: "ukrainian йцукен",
+			keys: layout.Ukrainian34,
+		},
 	}
-	defer file.Close()
 
-	buf := bufio.NewWriter(file)
-	defer buf.Flush()
+	for _, tc := range testCases {
+		tc := tc
 
-	err = jpeg.Encode(buf, img, &jpeg.Options{
-		Quality: 90,
-	})
-	if err != nil {
-		t.Fatal(err)
-		return
+		t.Run(tc.name, func(t *testing.T) {
+			img := visual.ToImage(tc.keys, 20)
+
+			file, err := os.Create(tc.name + ".jpeg")
+			if err != nil {
+				t.Fatal(err)
+				return
+			}
+			defer file.Close()
+
+			buf := bufio.NewWriter(file)
+			defer buf.Flush()
+
+			err = jpeg.Encode(buf, img, &jpeg.Options{
+				Quality: 90,
+			})
+			if err != nil {
+				t.Fatal(err)
+				return
+			}
+		})
 	}
 }
