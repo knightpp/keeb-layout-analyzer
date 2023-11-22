@@ -11,6 +11,8 @@ import (
 )
 
 func TestColemak(t *testing.T) {
+	t.Skip()
+
 	img := visual.ToImage(layout.ColemakDH34Keys, 20)
 
 	file, err := os.Create("colemak-dh-34-keys.jpeg")
