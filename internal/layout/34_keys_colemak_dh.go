@@ -124,13 +124,12 @@ var ColemakDH34Keys = Flatten(
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
+			Key{Char: '4'},
 			Key{
-				ID:   "4",
-				Char: '4',
-			},
-			Key{
-				ID:   "5",
 				Char: '5',
+				Pos: Vec2{
+					X: int(U1),
+				},
 			},
 		),
 	),
@@ -205,64 +204,67 @@ var ColemakDH34Keys = Flatten(
 	),
 	Cluster(RightSide, IndexFinger,
 		Column(
-			Key{Char: 'l'},
+			Key{
+				Char: 'l',
+				Pos: Vec2{
+					X: int(U1),
+				},
+			},
 			Key{
 				Char:   'n',
 				IsHome: true,
+				Pos: Vec2{
+					X: int(U1),
+				},
 			},
-			Key{Char: 'h'},
+			Key{
+				Char: 'h',
+				Pos: Vec2{
+					X: int(U1),
+				},
+			},
 		),
 		Column(
-			Key{
-				Char: 'j',
-				Pos: Vec2{
-					X: int(U1),
-				},
-			},
-			Key{
-				Char: 'm',
-				Pos: Vec2{
-					X: int(U1),
-				},
-			},
-			Key{
-				Char: 'k',
-				Pos: Vec2{
-					X: int(U1),
-				},
-			},
+			Key{Char: 'j'},
+			Key{Char: 'm'},
+			Key{Char: 'k'},
 		),
 		ActivationGroup([]string{"lshift"},
 			Flatten(
 				Column(
-					Key{Char: 'L'},
-					Key{Char: 'N'},
-					Key{Char: 'H'},
+					Key{
+						Char: 'L',
+						Pos: Vec2{
+							X: int(U1),
+						},
+					},
+					Key{
+						Char: 'N',
+						Pos: Vec2{
+							X: int(U1),
+						},
+					},
+					Key{
+						Char: 'H',
+						Pos: Vec2{
+							X: int(U1),
+						},
+					},
 				),
 				Column(
-					Key{
-						Char: 'J',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-					Key{
-						Char: 'M',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
-					Key{
-						Char: 'K',
-						Pos: Vec2{
-							X: int(U1),
-						},
-					},
+					Key{Char: 'J'},
+					Key{Char: 'M'},
+					Key{Char: 'K'},
 				),
 			)...,
 		),
 		ActivationGroup([]string{"layer 1"},
-			Key{Char: '7'},
+			Key{
+				Char: '7',
+				Pos: Vec2{
+					X: int(U1),
+				},
+			},
 			Key{Char: '6'},
 		),
 	),
@@ -278,8 +280,8 @@ var ColemakDH34Keys = Flatten(
 			{
 				ID: "layer 1",
 				Pos: Vec2{
-					X: 0,
-					Y: 0,
+					X: int(U1),
+					Y: int(U1) / 2,
 				},
 			},
 		},
@@ -287,12 +289,15 @@ var ColemakDH34Keys = Flatten(
 	Cluster(RightSide, ThumbFinger,
 		[]Key{
 			{
-				ID: "right space",
-				Pos: Vec2{
-					X: 0,
-					Y: 0,
-				},
+				ID:     "right esc",
 				IsHome: true,
+			},
+			{
+				ID: "right tab",
+				Pos: Vec2{
+					X: int(U1),
+					Y: int(U1) / 2,
+				},
 			},
 		},
 	),

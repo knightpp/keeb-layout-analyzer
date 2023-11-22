@@ -3,6 +3,7 @@ package layout
 import (
 	"errors"
 	"fmt"
+	"image"
 	"math"
 	"slices"
 	"strings"
@@ -12,14 +13,32 @@ import (
 )
 
 const (
-	MiddleFinger Finger = iota + 1
-	IndexFinger
+	_ Finger = iota
 	ThumbFinger
+	IndexFinger
+	MiddleFinger
 	RingFinger
 	PinkyFinger
 )
 
 type Finger byte
+
+func (f Finger) String() string {
+	switch f {
+	case MiddleFinger:
+		return "middle"
+	case IndexFinger:
+		return "index"
+	case ThumbFinger:
+		return "thumb"
+	case RingFinger:
+		return "ring"
+	case PinkyFinger:
+		return "pinky"
+	default:
+		return "unknown"
+	}
+}
 
 const (
 	LeftSide  Side = false
@@ -204,8 +223,16 @@ func (v Vec2) Sub(rhs Vec2) Vec2 {
 		Y: v.Y - rhs.Y,
 	}
 }
+
 func (v Vec2) Len() float64 {
 	return math.Sqrt(float64(v.X*v.X + v.Y*v.Y))
+}
+
+func (v Vec2) Point() image.Point {
+	return image.Point{
+		X: v.X,
+		Y: v.Y,
+	}
 }
 
 type State struct {
