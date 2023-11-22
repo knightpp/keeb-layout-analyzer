@@ -125,7 +125,12 @@ var ColemakDH34Keys = Flatten(
 		),
 		ActivationGroup([]string{"layer 1"},
 			Key{Char: '4'},
-			Key{Char: '5'},
+			Key{
+				Char: '5',
+				Pos: Vec2{
+					X: int(U1),
+				},
+			},
 		),
 	),
 	///////////// right hand
@@ -257,7 +262,12 @@ var ColemakDH34Keys = Flatten(
 		),
 		ActivationGroup([]string{"layer 1"},
 			Key{Char: '7'},
-			Key{Char: '6'},
+			Key{
+				Char: '6',
+				Pos: Vec2{
+					X: int(U1),
+				},
+			},
 		),
 	),
 
@@ -272,8 +282,8 @@ var ColemakDH34Keys = Flatten(
 			{
 				ID: "layer 1",
 				Pos: Vec2{
-					X: 0,
-					Y: 0,
+					X: int(U1),
+					Y: int(U1) / 2,
 				},
 			},
 		},
@@ -281,12 +291,15 @@ var ColemakDH34Keys = Flatten(
 	Cluster(RightSide, ThumbFinger,
 		[]Key{
 			{
-				ID: "right space",
-				Pos: Vec2{
-					X: 0,
-					Y: 0,
-				},
+				ID:     "right esc",
 				IsHome: true,
+			},
+			{
+				ID: "right tab",
+				Pos: Vec2{
+					X: int(U1),
+					Y: int(U1) / 2,
+				},
 			},
 		},
 	),
