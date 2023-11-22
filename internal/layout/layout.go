@@ -7,6 +7,7 @@ import (
 	"math"
 	"slices"
 	"strings"
+	"unicode"
 
 	"github.com/knightpp/keeb-layout-analyzer/internal/distance"
 	"gonum.org/v1/gonum/stat/combin"
@@ -327,6 +328,28 @@ func Flatten(keyss ...[]Key) []Key {
 		flat = append(flat, keys...)
 	}
 	return flat
+}
+
+func AddUppercase(activation []string, keys []Key) []Key {
+	keys = slices.Clone(keys)
+
+	for _, key := range keys {
+		fmt.Println(string(key.Char))
+		if key.Char == 0 ||
+			!unicode.IsLetter(key.Char) ||
+			unicode.IsUpper(key.Char) {
+			continue
+		}
+
+		key.ID = ""
+		key.Activation = activation
+		key.Char = unicode.ToUpper(key.Char)
+		key.IsHome = false
+
+		keys = append(keys, key)
+	}
+
+	return keys
 }
 
 func swap(keys []Key, i, j int) {
